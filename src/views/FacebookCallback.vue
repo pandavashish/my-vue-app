@@ -36,6 +36,8 @@ onMounted(async () => {
     })
 
     const accessToken = tokenRes.data.access_token
+    console.log('Access Token Response:', tokenRes.data)
+
 
     // Step 2: Fetch user info
     const profileRes = await axios.get('https://graph.facebook.com/me', {
@@ -45,11 +47,15 @@ onMounted(async () => {
       }
     })
 
+    console.log('User Profile Response:', profileRes.data)
+
+
     user.value = {
       name: profileRes.data.name,
       email: profileRes.data.email,
       picture: profileRes.data.picture.data.url
     }
+    console.log('User Object:', user.value)
 
   } catch (err) {
     console.error('Facebook callback error:', err)
