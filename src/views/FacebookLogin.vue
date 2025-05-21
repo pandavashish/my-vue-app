@@ -11,7 +11,7 @@
 <script setup>
 const redirectToFacebook = () => {
   const appId = '1341568866636370' // ✅ Your Facebook App ID
-  const redirectUri = encodeURIComponent('http://localhost:5173/facebook-callback') // ✅ Must match your app settings
+  const redirectUri = encodeURIComponent('https://ashishpandav.netlify.app//facebook-callback') // ✅ Must match your app settings
   const state = 'your_custom_state'
   const scope = 'email,public_profile'
 
