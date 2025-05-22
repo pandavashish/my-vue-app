@@ -10,12 +10,16 @@
 
 <script setup>
 const redirectToFacebook = () => {
-  const appId = '1341568866636370' // ✅ Your Facebook App ID
-  const redirectUri = encodeURIComponent('https://ashishpandav.netlify.app//facebook-callback') // ✅ Must match your app settings
+  const appId = '1341568866636370'
+  const redirectUri = encodeURIComponent('https://ashishpandav.netlify.app/facebook-callback')
   const state = 'your_custom_state'
   const scope = 'email,public_profile'
 
   const fbLoginUrl = `https://www.facebook.com/v17.0/dialog/oauth?client_id=${appId}&redirect_uri=${redirectUri}&state=${state}&scope=${scope}`
+
+  console.log('➡️ Redirecting to Facebook OAuth URL...')
+  console.log('🔗 OAuth URL:', fbLoginUrl)
+
   window.location.href = fbLoginUrl
 }
 </script>

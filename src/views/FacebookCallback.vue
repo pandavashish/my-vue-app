@@ -6,6 +6,9 @@
       <p><strong>Email:</strong> {{ user.email }}</p>
       <img :src="user.picture" width="100" />
     </div>
+    <div v-else>
+      <p>Loading user data...</p>
+    </div>
   </div>
 </template>
 
