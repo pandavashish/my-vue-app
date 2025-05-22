@@ -1,4 +1,3 @@
-<!-- src/views/LineCallback.vue -->
 <template>
   <div class="text-center mt-5">
     <h2>LINE Login Callback</h2>
@@ -29,20 +28,21 @@ onMounted(async () => {
   }
 
   try {
-    // Exchange authorization code for access token
-    const tokenRes = await axios.post('https://api.line.me/oauth2/v2.1/token', new URLSearchParams({
-      grant_type: 'authorization_code',
-      code,
-      redirect_uri: 'http://localhost:5173/line-callback',
-      client_id: '2007453147', // Replace with your LINE client ID
-      client_secret: 'd17397d02c1fc0a946434dc2dc1c6fb4' // Replace with your LINE client secret
-    }), {
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    const data = new URLSearchParams()
+    data.append('grant_type', 'authorization_code')
+    data.append('code', code)
+    data.append('redirect_uri', 'https://ashishpandav.netlify.app/line-callback') // ✅ Must match exactly
+    data.append('client_id', '2007459241') // ✅ Your LINE client ID
+    data.append('client_secret', '461e56d95db1d599ff4b6e8d69c53d5c') // ✅ Your LINE client secret
+
+    const tokenRes = await axios.post('https://api.line.me/oauth2/v2.1/token', data, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
     })
 
     const accessToken = tokenRes.data.access_token
 
-    // Fetch user profile
     const profileRes = await axios.get('https://api.line.me/v2/profile', {
       headers: {
         Authorization: `Bearer ${accessToken}`
@@ -55,7 +55,7 @@ onMounted(async () => {
       picture: profileRes.data.pictureUrl
     }
 
-    console.log("LINE User Info:", user.value)
+    console.log('LINE User Info:', user.value)
   } catch (error) {
     console.error('LINE login failed:', error.response?.data || error)
   }
