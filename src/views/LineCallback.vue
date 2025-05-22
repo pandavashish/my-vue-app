@@ -1,3 +1,4 @@
+<!-- src/views/LineCallback.vue -->
 <template>
   <div class="text-center mt-5">
     <h2>LINE Login Callback</h2>
@@ -31,9 +32,9 @@ onMounted(async () => {
     const data = new URLSearchParams()
     data.append('grant_type', 'authorization_code')
     data.append('code', code)
-    data.append('redirect_uri', 'https://ashishpandav.netlify.app/line-callback') // ✅ Must match exactly
-    data.append('client_id', '2007459241') // ✅ Your LINE client ID
-    data.append('client_secret', '461e56d95db1d599ff4b6e8d69c53d5c') // ✅ Your LINE client secret
+    data.append('redirect_uri', 'https://ashishpandav.netlify.app/line-callback') // ✅ Must exactly match LINE console
+    data.append('client_id', '2007459241') // ✅ Your Channel ID
+    data.append('client_secret', '461e56d95db1d599ff4b6e8d69c53d5c') // ✅ Your Channel Secret
 
     const tokenRes = await axios.post('https://api.line.me/oauth2/v2.1/token', data, {
       headers: {

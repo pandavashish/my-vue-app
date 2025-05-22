@@ -1,3 +1,4 @@
+<!-- src/views/LineLogin.vue -->
 <template>
   <div class="text-center mt-5">
     <h2>Login with LINE</h2>
@@ -9,11 +10,11 @@
 
 <script setup>
 const loginWithLine = () => {
-  const clientId = '2007459241' // ✅ Replace with your actual LINE client ID
-  const redirectUri = encodeURIComponent('https://ashishpandav.netlify.app/line-callback') // ✅ Use your deployed URL
+  const clientId = '2007459241' // ✅ Your LINE Channel ID
+  const redirectUri = encodeURIComponent('https://ashishpandav.netlify.app/line-callback') // ✅ Must match LINE Console
   const state = Math.random().toString(36).substring(2)
   const nonce = Math.random().toString(36).substring(2)
-  const scope = encodeURIComponent('profile openid email') // 🔐 Better to encode scope
+  const scope = encodeURIComponent('profile openid email')
 
   const url = `https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&state=${state}&scope=${scope}&nonce=${nonce}`
 
@@ -36,12 +37,10 @@ const loginWithLine = () => {
   box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3);
   transition: background 0.3s;
 }
-
 .line-login-btn:hover {
   background-color: #f7f7f7;
   cursor: pointer;
 }
-
 .line-login-btn i {
   font-size: 20px;
 }
