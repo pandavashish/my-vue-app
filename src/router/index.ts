@@ -21,16 +21,8 @@ const routes = [
   },
   { path: '/facebook-login', name: 'FacebookLogin', component: FacebookLogin },
   { path: '/facebook-callback', name: 'FacebookCallback', component: FacebookCallback },
-  {
-    path: '/line-login',
-    name: 'LineLogin',
-    component: LineLogin,
-  },
-  {
-    path: '/line-callback',
-    name: 'LineCallback',
-    component: LineCallback,
-  }
+  { path: '/line-login', name: 'LineLogin', component: LineLogin },
+  { path: '/line-callback', name: 'LineCallback', component: LineCallback }
 ]
 
 const router = createRouter({
